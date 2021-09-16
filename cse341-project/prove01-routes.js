@@ -22,7 +22,7 @@ const requestHandler = (request, response) => {
         response.write('<h1>Users</h1>');
         response.write('<ul>');
         for (let user of users) {
-            response.write('<li>' + user + '</li>');
+            response.write('<li>${users}</li>');
         }
         response.write('</ul>');
         response.write('</body>');
