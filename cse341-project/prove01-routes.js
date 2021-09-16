@@ -22,7 +22,7 @@ const requestHandler = (request, response) => {
         response.write('<h1>Users</h1>');
         response.write('<ul>');
         for (let user of users) {
-            response.write('<li>${users}</li>');
+            response.write(`<li>${user}</li>`);
         }
         response.write('</ul>');
         response.write('</body>');
@@ -39,7 +39,9 @@ const requestHandler = (request, response) => {
             const parsedBody = Buffer.concat(body).toString();
             const userName = parsedBody.split('=')[1];
             users.push(userName);
-            response.write(userName);
+            console.log(userName);
+            response.statusCode = 302;
+            response.setHeader('Location', '/users');
             return response.end();
         });
     };
